@@ -43,8 +43,8 @@ func (self *ClassFile) read(reader *ClassReader) {
 	self.thisClass = reader.readUint16()
 	self.superClass = reader.readUint16()
 	self.interfaces = reader.readUint16s()
-	self.fields = readMember(reader, self.constantPool)
-	self.methods = readMember(reader, self.constantPool)
+	self.fields = readMembers(reader, self.constantPool)
+	self.methods = readMembers(reader, self.constantPool)
 	self.attributes = readAttributes(reader, self.constantPool)
 }
 
@@ -66,7 +66,7 @@ func (self *ClassFile) readAndCheckVersion(reader *ClassReader) {
 			return
 		}
 	}
-	psnic("java.lang.UnsupportedClassVersionError!")
+	panic("java.lang.UnsupportedClassVersionError!")
 }
 
 func (self *ClassFile) MinorVersion() uint16 {

@@ -57,7 +57,7 @@ func printClassInfo(cf *classfile.ClassFile) {
 		fmt.Printf("	%s\n", f.Name())
 	}
 
-	fmt.Printf("methods count: %v\n", len(cf.Methods)))
+	fmt.Printf("methods count: %v\n", len(cf.Methods()))
 	for _, m := range cf.Methods() {
 		fmt.Printf("	%s\n", m.Name())
 	}

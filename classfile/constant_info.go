@@ -59,6 +59,6 @@ func newConstantInfo(tag uint8, cp ConstantPool) ConstantInfo {
 	case CONSTANT_InvokeDynamic:
 		return &ConstantInvokeDynamicInfo{}
 	default: // todo
-		Panic("java.lang.ClassFormatError: constant pool tag!")
+		panic("java.lang.ClassFormatError: constant pool tag!")
 	}
 }

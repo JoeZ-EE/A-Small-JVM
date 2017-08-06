@@ -31,11 +31,11 @@ func (self *ConstantFloatInfo) readInfo(reader *ClassReader) {
 }
 
 func (self *ConstantLongInfo) readInfo(reader *ClassReader) {
-	bytes := reader.readUint64
+	bytes := reader.readUint64()
 	self.val = int64(bytes)
 }
 
-func (self *ConstantDoubleInfo) readerInfo(reader *ClassReader) {
+func (self *ConstantDoubleInfo) readInfo(reader *ClassReader) {
 	bytes := reader.readUint64()
 	self.val = math.Float64frombits(bytes)
 }

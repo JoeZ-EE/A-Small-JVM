@@ -3,6 +3,7 @@ package loads
 import "A-Small-JVM/instructions/base"
 import "A-Small-JVM/rtda"
 
+// Load int from local variable
 type ILOAD struct{ base.Index8Instruction }
 type ILOAD_0 struct{ base.NoOperandsInstruction }
 type ILOAD_1 struct{ base.NoOperandsInstruction }

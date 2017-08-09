@@ -3,6 +3,7 @@ package math
 import "A-Small-JVM/instructions/base"
 import "A-Small-JVM/rtda"
 
+// Increment local variable by constant
 type IINC struct {
 	Index uint
 	Const int32

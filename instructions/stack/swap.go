@@ -3,10 +3,17 @@ package stack
 import "A-Small-JVM/instructions/base"
 import "A-Small-JVM/rtda"
 
-type SWAP struct {
-	base.NoOperandsInstruction
-}
+// Swap the top two operand stack values
+type SWAP struct{ base.NoOperandsInstruction }
 
+/*
+bottom -> top
+[...][c][b][a]
+          \/
+          /\
+         V  V
+[...][c][a][b]
+*/
 func (self *SWAP) Execute(frame *rtda.Frame) {
 	stack := frame.OperandStack()
 	slot1 := stack.PopSlot()

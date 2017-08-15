@@ -1,13 +1,10 @@
 public class Test {
 
-    private int a;
-    private int b;
-
-    public int add() {
-        return a + b;
-    }
-
-    public int sub() {
-        return a - b;
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 1; i <= 100; i++) {
+            sum += i;
+        }
+        System.out.println(sum);
     }
 }

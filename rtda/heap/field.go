@@ -4,6 +4,8 @@ import "A-Small-JVM/classfile"
 
 type Field struct {
 	ClassMember
+	slotId          uint
+	constValueIndex uint
 }
 
 func newFields(class *Class, cfFields []*classfile.MemberInfo) []*Field {
@@ -12,6 +14,17 @@ func newFields(class *Class, cfFields []*classfile.MemberInfo) []*Field {
 		fields[i] = &Field{}
 		fields[i].class = class
 		fields[i].copyMemberInfo(cfField)
+		fields[i].copyAttributrs(cfField)
 	}
 	return fields
+}
+
+func (self *Field) copyAttributes(cfField *classfile.MemberInfo) {
+	if valAttr := cfField.ConstantValueAttribute(); valAttr != nil {
+		self.constValueIndex = uint(valAttr.ConstantValueIndex())
+	}
+}
+
+func (self *Field) isLongOrDouble() bool {
+	return self.descriptor == "J" || self.descriptor == "D"
 }

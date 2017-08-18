@@ -1,13 +1,16 @@
 package heap
 
-import "A-Small-JVM/classfile"
+import (
+	"A-Small-JVM/classfile"
+	"strings"
+)
 
 type Class struct {
 	accessFlags       uint16
 	name              string
 	superClassName    string
 	interfaceNames    []string
-	constantPool      *constantPool
+	constantPool      *ConstantPool
 	fields            []*Field
 	methods           []*Method
 	loader            *ClassLoader
@@ -15,7 +18,7 @@ type Class struct {
 	interfaces        []*Class
 	instanceSlotCount uint
 	staticSlotCount   uint
-	staticVars        *Slots
+	staticVars        Slots
 }
 
 func newClass(cf *classfile.ClassFile) *Class {
@@ -53,4 +56,11 @@ func (self *Class) IsAnnotation() bool {
 }
 func (self *Class) IsEnum() bool {
 	return 0 != self.accessFlags&ACC_ENUM
+}
+
+func (self *Class) GetPackageName() string {
+	if i := strings.LastIndex(self.name, "/"); i >= 0 {
+		return self.name[:i]
+	}
+	return ""
 }

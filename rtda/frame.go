@@ -1,5 +1,7 @@
 package rtda
 
+import "A-Small-JVM/rtda/heap"
+
 type Frame struct {
 	lower        *Frame
 	localVars    LocalVars
@@ -35,4 +37,8 @@ func (self *Frame) NextPC() int {
 
 func (self *Frame) SetNextPC(nextPC int) {
 	self.nextPC = nextPC
+}
+
+func (self *Frame) Method() *heap.Method {
+	return self.method
 }

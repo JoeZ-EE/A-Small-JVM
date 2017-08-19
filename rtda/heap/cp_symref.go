@@ -13,7 +13,7 @@ func (self *SymRef) ResolvedClass() *Class {
 	return self.class
 }
 
-func (self *SymRef) resolveClassRef() {
+func (self *SymRef) resolvedClassRef() {
 	d := self.cp.class
 	c := d.loader.LoadClass(self.className)
 	if !c.isAccessibleTo(d) {

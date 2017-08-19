@@ -64,3 +64,15 @@ func (self *Class) GetPackageName() string {
 	}
 	return ""
 }
+
+func (self *Class) ConstantPool() *ConstantPool {
+	return self.constantPool
+}
+
+func (self *Class) NewObject() *Object {
+	return newObject(self)
+}
+
+func (self *Class) StaticVars() Slots {
+	return self.staticVars
+}
